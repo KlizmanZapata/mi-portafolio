@@ -1,0 +1,84 @@
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-main">
+
+      <!-- Marca personal -->
+      <div class="footer-brand">
+
+        <a
+          href="#inicio"
+          class="brand-name"
+          aria-label="Klisman Zapata, volver al inicio">
+
+          Klisman Zapata<span>.</span>
+
+        </a>
+
+        <p>
+          Ingeniero de Sistemas y Computación.
+          Desarrollador Full Stack apasionado por crear
+          soluciones tecnológicas.
+        </p>
+
+      </div>
+
+      <!-- Navegación -->
+      <div class="footer-navigation">
+
+        <h3>Navegación</h3>
+
+        <nav aria-label="Navegación del pie de página">
+
+          @for (link of navigationLinks; track link.name) {
+            <a [href]="link.url">
+              {{ link.name }}
+            </a>
+          }
+
+        </nav>
+
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-social">
+
+        <h3>Encuéntrame</h3>
+
+        @for (link of socialLinks; track link.name) {
+          <a
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'Visitar mi perfil de ' + link.name + ' (abre en una nueva pestaña)'">
+
+            {{ link.name }}
+
+            <span aria-hidden="true">↗</span>
+
+          </a>
+        }
+
+      </div>
+
+    </div>
+
+    <!-- Información inferior -->
+    <div class="footer-bottom">
+
+      <p>
+        © {{ currentYear }} Klisman Zapata.
+        Todos los derechos reservados.
+      </p>
+
+      <p class="footer-built">
+        Diseñado y desarrollado con Angular.
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>

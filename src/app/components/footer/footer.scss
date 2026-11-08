@@ -1,0 +1,201 @@
+
+:host {
+  display: block;
+}
+
+/* Footer principal */
+
+.footer {
+  width: 100%;
+  box-sizing: border-box;
+
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+
+  padding: 55px 8% 25px;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contenido principal */
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+
+  gap: 50px;
+  padding-bottom: 45px;
+}
+
+/* Marca personal */
+
+.footer-brand {
+  max-width: 340px;
+}
+
+.brand-name {
+  display: inline-block;
+
+  color: var(--text-primary);
+  font-size: 23px;
+  font-weight: 800;
+
+  text-decoration: none;
+  letter-spacing: -0.8px;
+
+  span {
+    color: var(--accent);
+  }
+}
+
+.footer-brand p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+/* Navegación y redes sociales */
+
+.footer-navigation,
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  h3 {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 5px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  a {
+    width: fit-content;
+
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+  }
+}
+
+/* Enlaces de redes sociales */
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  span {
+    color: var(--accent);
+    transition: transform 0.2s ease;
+  }
+}
+
+/* Efectos hover */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .footer-navigation a:hover,
+  .footer-social a:hover {
+    color: var(--accent);
+  }
+
+  .footer-social a:hover span {
+    transform: translate(2px, -2px);
+  }
+
+}
+
+/* Parte inferior */
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+  padding-top: 22px;
+
+  border-top: 1px solid var(--border);
+
+  p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+/* Accesibilidad: navegación por teclado */
+
+.brand-name:focus-visible,
+.footer-navigation a:focus-visible,
+.footer-social a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Responsive: tabletas */
+
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 45px 6% 22px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 25px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+}
+
+/* Responsive: móviles pequeños */
+
+@media (max-width: 400px) {
+
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+}
+
+/* Accesibilidad: movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer-navigation a,
+  .footer-social a,
+  .footer-social a span {
+    transition: none;
+  }
+
+}

@@ -1,0 +1,322 @@
+
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar principal */
+
+.navbar {
+  min-height: 76px;
+  padding: 16px 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Logo */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+}
+
+.logo-highlight {
+  color: var(--accent);
+}
+
+/* Navegación escritorio */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.desktop-nav a,
+.mobile-nav a {
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  transition: color 0.2s ease;
+}
+
+/* Acciones escritorio */
+
+.desktop-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botones de tema y menú */
+
+.theme-button,
+.menu-toggle {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  font-size: 21px;
+  cursor: pointer;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+/* Botones de contacto */
+
+.contact-button,
+.mobile-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 17px;
+
+  border-radius: 9px;
+  background: var(--accent);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: background-color 200ms ease;
+}
+
+/* Ocultar botón de menú en escritorio */
+
+.menu-toggle {
+  display: none;
+}
+
+/* Menú móvil */
+
+.mobile-menu {
+  display: none;
+}
+
+/* Efectos hover */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .desktop-nav a:hover,
+  .mobile-nav a:hover {
+    color: var(--accent);
+  }
+
+  .theme-button:hover,
+  .menu-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .contact-button:hover,
+  .mobile-contact:hover {
+    background: var(--accent-hover);
+  }
+
+}
+
+/* Responsive */
+
+@media (max-width: 760px) {
+
+  .navbar {
+    min-height: 70px;
+    padding: 12px 5%;
+    gap: 12px;
+  }
+
+  .desktop-nav,
+  .desktop-actions {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: grid;
+    flex-shrink: 0;
+    font-size: 24px;
+  }
+
+  /* Contenedor del menú */
+
+  .mobile-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    overflow: hidden;
+
+    background: var(--background);
+    border-bottom: 1px solid transparent;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+      grid-template-rows 0.3s ease,
+      opacity 0.25s ease,
+      border-color 0.25s ease,
+      visibility 0.3s;
+  }
+
+  .mobile-menu.is-open {
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+    visibility: visible;
+
+    border-bottom-color: var(--border);
+  }
+
+  .mobile-menu-content {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 5%;
+  }
+
+  .mobile-menu.is-open .mobile-menu-content {
+    padding-top: 18px;
+    padding-bottom: 24px;
+  }
+
+  /* Selector de tema móvil */
+
+  .mobile-theme-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 0 18px;
+
+    border: 0;
+    border-bottom: 1px solid var(--border);
+
+    background: transparent;
+    color: var(--text-primary);
+
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .theme-switch {
+    width: 36px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 3px;
+
+    border-radius: 99px;
+    background: var(--accent);
+  }
+
+  .switch-knob {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+    background: white;
+
+    transition: transform 0.2s ease;
+  }
+
+  .theme-switch.is-light .switch-knob {
+    transform: translateX(16px);
+  }
+
+  /* Navegación móvil */
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    padding-top: 6px;
+  }
+
+  .mobile-nav a {
+    padding: 12px 0;
+    font-size: 15px;
+  }
+
+  /* Botón contacto móvil */
+
+  .mobile-contact {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+}
+
+/* Accesibilidad: navegación por teclado */
+
+.desktop-nav a:focus-visible,
+.mobile-nav a:focus-visible,
+.logo:focus-visible,
+.theme-button:focus-visible,
+.menu-toggle:focus-visible,
+.contact-button:focus-visible,
+.mobile-theme-button:focus-visible,
+.mobile-contact:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Accesibilidad: movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .mobile-menu,
+  .theme-switch,
+  .switch-knob,
+  .theme-button,
+  .menu-toggle {
+    transition: none;
+  }
+
+}

@@ -1,0 +1,101 @@
+
+<article class="project-card">
+
+  <!-- Imagen del proyecto -->
+  <div class="project-image">
+
+    @if (!imageError()) {
+      <img
+        [src]="project().image"
+        [alt]="'Vista previa del proyecto ' + project().title"
+        loading="lazy"
+        decoding="async"
+        (error)="onImageError()"
+      />
+    } @else {
+      <div
+        class="image-fallback"
+        role="img"
+        [attr.aria-label]="'Vista previa no disponible para ' + project().title"
+      >
+        <span aria-hidden="true">KZ</span>
+        <p>Vista previa no disponible</p>
+      </div>
+    }
+
+    <span class="project-category">
+      {{ project().category }}
+    </span>
+
+    @if (project().privateProject) {
+      <span class="project-status">
+        Proyecto privado
+      </span>
+    }
+
+  </div>
+
+  <!-- Información del proyecto -->
+  <div class="project-content">
+
+    <h3>{{ project().title }}</h3>
+
+    <p class="project-description">
+      {{ project().description }}
+    </p>
+
+    <!-- Tecnologías -->
+    <div
+      class="technologies"
+      role="group"
+      aria-label="Tecnologías utilizadas"
+    >
+
+      @for (technology of project().technologies; track technology) {
+        <span class="technology-tag">
+          {{ technology }}
+        </span>
+      }
+
+    </div>
+
+    <!-- Enlaces -->
+    <div class="project-links">
+
+      @if (project().githubUrl) {
+        <a
+          [href]="project().githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+          [attr.aria-label]="'Ver código de ' + project().title + ' en GitHub (abre en una nueva pestaña)'"
+        >
+          <span>GitHub</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      }
+
+      @if (project().demoUrl) {
+        <a
+          [href]="project().demoUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link demo-link"
+          [attr.aria-label]="'Ver demostración de ' + project().title + ' (abre en una nueva pestaña)'"
+        >
+          <span>Ver proyecto</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      }
+
+      @if (project().privateProject) {
+        <span class="project-unavailable">
+          Código fuente no disponible por confidencialidad empresarial.
+        </span>
+      }
+
+    </div>
+
+  </div>
+
+</article>

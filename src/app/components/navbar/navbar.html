@@ -1,0 +1,132 @@
+
+<header class="navbar">
+
+  <!-- Logo -->
+  <a
+    class="logo"
+    href="#inicio"
+    aria-label="Klisman, ir al inicio"
+    (click)="closeMenu()">
+
+    <span class="logo-icon">K</span>
+    <span>Klisman<span class="logo-highlight">.</span></span>
+  </a>
+
+  <!-- Navegación escritorio -->
+  <nav class="desktop-nav" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- Acciones escritorio -->
+  <div class="desktop-actions">
+
+    <button
+      class="theme-button"
+      type="button"
+      (click)="themeService.toggleTheme()"
+      [attr.aria-label]="themeService.theme() === 'dark'
+        ? 'Activar modo claro'
+        : 'Activar modo oscuro'">
+
+      @if (themeService.theme() === 'dark') {
+        <span aria-hidden="true">☀</span>
+      } @else {
+        <span aria-hidden="true">☾</span>
+      }
+
+    </button>
+
+    <a class="contact-button" href="#contacto">
+      Hablemos <span aria-hidden="true">↗</span>
+    </a>
+
+  </div>
+
+  <!-- Botón menú móvil -->
+  <button
+    class="menu-toggle"
+    type="button"
+    (click)="toggleMenu()"
+    (keydown.escape)="closeMenu()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="mobile-menu"
+    [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'">
+
+    @if (menuOpen()) {
+      <span aria-hidden="true">×</span>
+    } @else {
+      <span aria-hidden="true">☰</span>
+    }
+
+  </button>
+
+</header>
+
+<!-- Menú móvil -->
+<div
+  id="mobile-menu"
+  class="mobile-menu"
+  [class.is-open]="menuOpen()"
+  [attr.aria-hidden]="!menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+  (keydown.escape)="closeMenu()">
+
+  <div class="mobile-menu-content">
+
+    <!-- Selector de tema móvil -->
+    <button
+      class="mobile-theme-button"
+      type="button"
+      (click)="themeService.toggleTheme()"
+      [attr.aria-label]="themeService.theme() === 'dark'
+        ? 'Activar modo claro'
+        : 'Activar modo oscuro'">
+
+      <span>
+        {{ themeService.theme() === 'dark'
+          ? 'Activar modo claro'
+          : 'Activar modo oscuro' }}
+      </span>
+
+      <span
+        class="theme-switch"
+        [class.is-light]="themeService.theme() === 'light'">
+
+        <span class="switch-knob"></span>
+
+      </span>
+
+      <span aria-hidden="true">
+        {{ themeService.theme() === 'dark' ? '☀' : '☾' }}
+      </span>
+
+    </button>
+
+    <!-- Enlaces móviles -->
+    <nav class="mobile-nav" aria-label="Navegación móvil">
+
+      <a href="#inicio" (click)="closeMenu()">Inicio</a>
+      <a href="#sobre-mi" (click)="closeMenu()">Sobre mí</a>
+      <a href="#proyectos" (click)="closeMenu()">Proyectos</a>
+      <a href="#habilidades" (click)="closeMenu()">Habilidades</a>
+      <a href="#contacto" (click)="closeMenu()">Contacto</a>
+
+    </nav>
+
+    <!-- Botón contacto móvil -->
+    <a
+      class="mobile-contact"
+      href="#contacto"
+      (click)="closeMenu()">
+
+      Habla conmigo ↗
+
+    </a>
+
+  </div>
+
+</div>

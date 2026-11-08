@@ -1,0 +1,257 @@
+
+<section id="contacto" class="content-section">
+
+  <div class="section-header" appReveal>
+    <p class="section-label">04 / CONTACTO</p>
+
+    <h2>
+      Hablemos de tu <span>próximo proyecto</span>
+    </h2>
+
+    <p class="section-description">
+      ¿Tienes una oportunidad laboral, una idea o un proyecto?
+      Me gustaría conocerlo. Puedes escribirme o encontrarme
+      en mis redes profesionales.
+    </p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- Información de contacto -->
+    <div class="contact-info" appReveal>
+
+      <div class="contact-intro">
+        <span class="contact-icon">👋</span>
+
+        <h3>Conectemos</h3>
+
+        <p>
+          Estoy abierto a conocer nuevas oportunidades,
+          aprender y colaborar en proyectos de desarrollo
+          de software.
+        </p>
+      </div>
+
+      <div class="contact-details">
+
+        <a
+          class="contact-link"
+          href="mailto:klizmanzapata117@gmail.com">
+
+          <span class="contact-link-icon">
+            <img
+              src="https://cdn.simpleicons.org/gmail/EA4335"
+              alt=""
+              aria-hidden="true"
+            />
+          </span>
+
+          <span class="contact-link-content">
+            <small>Correo electrónico</small>
+            <strong>klizmanzapata117@gmail.com</strong>
+          </span>
+        </a>
+
+        @for (link of contactLinks; track link.label) {
+          <a
+            class="contact-link"
+            [href]="link.url"
+            [attr.target]="link.icon === 'phone' ? null : '_blank'"
+            [attr.rel]="link.icon === 'phone' ? null : 'noopener noreferrer'"
+            [attr.aria-label]="link.label + ': ' + link.value">
+
+            <span class="contact-link-icon">
+
+              @switch (link.icon) {
+                @case ('linkedin') {
+                  <i class="devicon-linkedin-plain colored"
+                    aria-hidden="true"></i>
+                }
+
+                @case ('github') {
+                  <i class="devicon-github-original"
+                    aria-hidden="true"></i>
+                }
+
+                @case ('whatsapp') {
+                  <img
+                    src="https://cdn.simpleicons.org/whatsapp/25D366"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                }
+
+                @case ('phone') {
+                  <span aria-hidden="true">☎</span>
+                }
+
+                @case ('gmail') {
+                  <img
+                    src="https://cdn.simpleicons.org/gmail/EA4335"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                }
+              }
+
+            </span>
+
+            <span class="contact-link-content">
+              <small>{{ link.label }}</small>
+              <strong>{{ link.value }}</strong>
+            </span>
+          </a>
+        }
+
+        <div class="contact-link">
+          <span class="contact-link-icon">⌖</span>
+
+          <span class="contact-link-content">
+            <small>Ubicación</small>
+            <strong>Pereira, Colombia</strong>
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Formulario -->
+    <div class="contact-form-container" appReveal>
+
+      <h3>Envíame un mensaje</h3>
+
+      <p class="form-description">
+        Completa los siguientes campos para enviarme tu mensaje. Me pondré en contacto contigo tan pronto como sea posible.
+      </p>
+
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        novalidate>
+
+        <div class="form-group">
+          <label for="name">Nombre</label>
+
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Tu nombre"
+            autocomplete="name"
+            maxlength="80"
+            required
+            [attr.aria-invalid]="
+              contactForm.controls.name.touched &&
+              contactForm.controls.name.invalid
+            "
+            aria-describedby="name-error"
+          />
+
+          @if (
+            contactForm.controls.name.touched &&
+            contactForm.controls.name.invalid
+          ) {
+            <small id="name-error" class="error-message">
+              @if (contactForm.controls.name.hasError('required')) {
+                El nombre es obligatorio.
+              } @else if (contactForm.controls.name.hasError('pattern')) {
+                El nombre no puede contener solamente espacios.
+              } @else if (contactForm.controls.name.hasError('minlength')) {
+                El nombre debe tener al menos 2 caracteres.
+              } @else {
+                El nombre no puede superar los 80 caracteres.
+              }
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="tu@email.com"
+            autocomplete="email"
+            maxlength="254"
+            required
+            [attr.aria-invalid]="
+              contactForm.controls.email.touched &&
+              contactForm.controls.email.invalid
+            "
+            aria-describedby="email-error"
+          />
+
+          @if (
+            contactForm.controls.email.touched &&
+            contactForm.controls.email.invalid
+          ) {
+            <small class="error-message">
+              @if (contactForm.controls.email.hasError('required')) {
+                El correo electrónico es obligatorio.
+              } @else {
+                Ingresa un correo electrónico válido.
+              }
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensaje</label>
+
+          <textarea
+            id="message"
+            formControlName="message"
+            rows="5"
+            placeholder="Cuéntame sobre tu proyecto..."
+          ></textarea>
+
+          @if (
+            contactForm.controls.message.touched &&
+            contactForm.controls.message.invalid
+          ) {
+            <small class="error-message">
+              @if (contactForm.controls.message.hasError('required')) {
+                El mensaje es obligatorio.
+              } @else {
+                El mensaje debe tener al menos 10 caracteres.
+              }
+            </small>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="isSending">
+          @if (isSending) {
+            <span>Enviando mensaje...</span>
+          } @else {
+            <span>
+              Enviar mensaje
+              <span class="submit-arrow" aria-hidden="true">→</span>
+            </span>
+          }
+        </button>
+
+        @if (formStatus === 'success') {
+          <p class="form-success" role="status">
+            ¡Mensaje enviado correctamente! Gracias por contactarme.
+          </p>
+        }
+
+        @if (formStatus === 'error') {
+          <p class="form-error" role="alert">
+            No fue posible enviar el mensaje. Inténtalo nuevamente.
+          </p>
+        }
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>

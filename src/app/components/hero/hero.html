@@ -1,0 +1,67 @@
+
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <p class="eyebrow">
+      <span class="status-dot" aria-hidden="true"></span>
+      INGENIERO DE SISTEMAS Y COMPUTACIÓN
+    </p>
+
+    <h1 id="hero-title">
+      Hola, soy
+      <span class="gradient-text">Klisman Zapata.</span>
+    </h1>
+
+    <h2>Desarrollador Full Stack</h2>
+
+    <p class="hero-description">
+      Desarrollo aplicaciones web con Angular, JavaScript y Java,
+      buscando crear soluciones funcionales, mantenibles y centradas
+      en las necesidades de los usuarios.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="#proyectos">
+        Ver mis proyectos
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <a class="secondary-button" href="#contacto">
+        Contactarme
+      </a>
+    </div>
+
+    <div class="hero-technologies">
+      <span class="technologies-label">TECNOLOGÍAS</span>
+
+      <ul>
+        <li>Angular</li>
+        <li>TypeScript</li>
+        <li>Java</li>
+        <li>Spring Boot</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrapper">
+    <div class="photo-decoration" aria-hidden="true"></div>
+
+    <div class="photo-placeholder">
+      @if (!imageError) {
+        <img
+          src="/images/FOTO-Klizman.jpg"
+          alt="Fotografía de Klisman Zapata"
+          class="hero-photo"
+          (error)="onImageError()"
+        />
+      } @else {
+        <span class="photo-initials" aria-label="Klisman Zapata">
+          KZ
+        </span>
+      }
+    </div>
+
+    <p class="photo-caption">
+      Desarrollador Full Stack · Colombia
+    </p>
+  </div>
+</section>

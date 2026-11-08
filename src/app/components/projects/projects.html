@@ -1,0 +1,84 @@
+<section
+  id="proyectos"
+  class="projects-section"
+  aria-labelledby="projects-title"
+>
+  <!-- Encabezado -->
+  <div class="section-header" appReveal>
+    <p class="section-label">02 / PORTAFOLIO</p>
+
+    <h2 id="projects-title">
+      Proyectos <span class="gradient-text">destacados.</span>
+    </h2>
+
+    <p class="section-description">
+      Una selección de proyectos desarrollados durante mi experiencia
+      profesional y aprendizaje personal, aplicando diferentes
+      tecnologías para construir soluciones web.
+    </p>
+  </div>
+
+  <!-- Filtros -->
+  <div
+    class="projects-filters"
+    role="group"
+    aria-label="Filtrar proyectos por categoría"
+  >
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="activeFilter() === 'all'"
+      [attr.aria-pressed]="activeFilter() === 'all'"
+      (click)="setFilter('all')"
+    >
+      Todos
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="activeFilter() === 'professional'"
+      [attr.aria-pressed]="activeFilter() === 'professional'"
+      (click)="setFilter('professional')"
+    >
+      Experiencia profesional
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="activeFilter() === 'personal'"
+      [attr.aria-pressed]="activeFilter() === 'personal'"
+      (click)="setFilter('personal')"
+    >
+      Proyectos personales
+    </button>
+  </div>
+
+  <!-- Resultados -->
+  @let projectsList = filteredProjects();
+
+  <div class="projects-grid">
+    @for (project of projectsList; track project.id) {
+      <div class="project-item" appReveal>
+        <app-project-card [project]="project" />
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <h3>No hay proyectos disponibles</h3>
+        <p>
+          Actualmente no hay proyectos en esta categoría.
+        </p>
+      </div>
+    }
+  </div>
+
+  <!-- Contador -->
+  <p
+    class="projects-count"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    Mostrando {{ projectSummary().count }}
+    {{ projectSummary().count === 1 ? 'proyecto' : 'proyectos' }}
+  </p>

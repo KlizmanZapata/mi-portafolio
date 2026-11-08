@@ -1,0 +1,65 @@
+
+<section id="habilidades" class="content-section">
+
+  <div class="section-header" appReveal>
+    <p class="section-label">03 / HABILIDADES</p>
+
+    <h2>
+      Tecnologías y <span>herramientas</span>
+    </h2>
+
+    <p class="section-description">
+      Tecnologías y herramientas que utilizo para desarrollar
+      soluciones web y construir aplicaciones.
+    </p>
+  </div>
+
+  <div class="skills-grid">
+
+    @for (group of skillGroups; track group.id) {
+      <article class="skill-card" appReveal>
+
+        <div class="skill-card-header">
+          <span class="skill-icon">{{ group.icon }}</span>
+          <span class="skill-number">{{ group.number }}</span>
+        </div>
+
+        <h3>{{ group.title }}</h3>
+
+        <p class="skill-description">
+          {{ group.description }}
+        </p>
+
+        <div
+          class="technologies-list"
+          role="list"
+          [attr.aria-label]="'Tecnologías de ' + group.title"
+        >
+
+          @for (technology of group.technologies; track technology.name) {
+            <span class="technology-tag" role="listitem">
+
+              @if (technology.iconClass) {
+                <i
+                  [class]="technology.iconClass"
+                  aria-hidden="true">
+                </i>
+              } @else {
+                <span class="technology-fallback" aria-hidden="true">
+                  {{ technology.name === 'SQL' ? 'DB' : 'API' }}
+                </span>
+              }
+
+              <span>{{ technology.name }}</span>
+
+            </span>
+          }
+
+        </div>
+
+      </article>
+    }
+
+  </div>
+
+</section>
