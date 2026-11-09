@@ -1,59 +1,139 @@
-# MiPortafolio
+# Klisman Zapata | Portafolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.29.
+<p align="center">
+  <a href="https://klismanzapata.vercel.app/">
+    <strong>🌐 Ver portafolio en línea</strong>
+  </a>
+</p>
 
-## Development server
+Portafolio personal desarrollado con **Angular, TypeScript y SCSS**, diseñado para presentar mi perfil profesional como desarrollador Full Stack, mis proyectos, habilidades técnicas y experiencia en desarrollo de software.
 
-To start a local development server, run:
+El proyecto cuenta con una interfaz moderna, adaptable a diferentes dispositivos y con funcionalidades interactivas que buscan ofrecer una experiencia de navegación clara y agradable.
+
+## ✨ Características principales
+
+- **Diseño responsive:** adaptación a dispositivos móviles, tablets y computadores.
+- **Modo claro y oscuro:** cambio de tema con persistencia de la preferencia del usuario.
+- **Animaciones de desplazamiento:** efectos de aparición de elementos durante la navegación.
+- **Proyectos dinámicos:** visualización de proyectos y filtrado por categorías.
+- **Sección de habilidades:** presentación de tecnologías y herramientas de desarrollo.
+- **Formulario de contacto:** envío de mensajes mediante EmailJS.
+- **Navegación intuitiva:** acceso a las diferentes secciones del portafolio.
+
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| Angular 21 | Framework principal |
+| TypeScript | Lenguaje de programación |
+| SCSS | Estilos y diseño responsive |
+| HTML5 | Estructura de la aplicación |
+| RxJS | Programación reactiva |
+| EmailJS | Envío de mensajes desde el formulario |
+| Vitest | Pruebas unitarias |
+| Git y GitHub | Control de versiones |
+| Vercel | Despliegue de la aplicación |
+
+## 📂 Secciones del portafolio
+
+- **Inicio:** presentación personal y perfil como desarrollador.
+- **Sobre mí:** información profesional y trayectoria.
+- **Proyectos:** muestra de proyectos personales y profesionales.
+- **Habilidades:** tecnologías, lenguajes y herramientas.
+- **Contacto:** formulario de contacto y enlaces profesionales.
+
+## 🖥️ Vista previa del proyecto
+
+### Inicio
+
+![Vista principal del portafolio](docs/images/home.png)
+
+### Proyectos
+
+![Sección de proyectos](docs/images/projects.png)
+
+### Habilidades
+
+![Sección de habilidades](docs/images/skills.png)
+
+### Diseño responsive
+
+![Vista móvil del portafolio](docs/images/mobile.png)
+
+## 🚀 Instalación y ejecución local
+
+### Requisitos previos
+
+- Node.js y npm.
+- Git.
+
+### 1. Clonar el repositorio
 
 ```bash
-ng serve
+git clone https://github.com/KlizmanZapata/mi-portafolio.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Acceder al proyecto
 
 ```bash
-ng generate component component-name
+cd mi-portafolio
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 3. Instalar dependencias
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+### 4. Ejecutar el servidor de desarrollo
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Abre el navegador en:
 
-## Running unit tests
+```text
+http://localhost:4200/
+```
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+La aplicación se actualizará automáticamente cuando realices cambios en los archivos del proyecto.
+
+## 📦 Compilación
+
+Para generar la versión de producción:
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
+Los archivos compilados se generan dentro de la carpeta `dist/`.
 
-For end-to-end (e2e) testing, run:
+## 📧 Configuración del formulario de contacto
 
-```bash
-ng e2e
-```
+El formulario utiliza EmailJS para enviar mensajes sin necesidad de implementar un backend propio.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Para configurar esta funcionalidad:
 
-## Additional Resources
+1. Crear una cuenta en [EmailJS](https://www.emailjs.com/).
+2. Configurar un servicio de correo electrónico.
+3. Crear una plantilla de correo.
+4. Configurar los identificadores correspondientes y la clave pública en el archivo de configuración de EmailJS del proyecto.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Importante:** no publiques claves privadas, contraseñas ni credenciales sensibles en el repositorio.
+
+## 🌐 Despliegue
+
+La aplicación está desplegada mediante Vercel y vinculada al repositorio de GitHub.
+
+**Demo:** [https://klismanzapata.vercel.app/](https://klismanzapata.vercel.app/)
+
+## 👨‍💻 Autor
+
+**Klisman Steven Zapata González**
+
+Ingeniero de Sistemas y Computación | Desarrollador Full Stack
+
+- **GitHub:** [KlizmanZapata](https://github.com/KlizmanZapata)
+- **LinkedIn:** [Klisman Zapata](https://www.linkedin.com/in/klizmanzapata/)
+- **Portafolio:** [klismanzapata.vercel.app](https://klismanzapata.vercel.app/)
